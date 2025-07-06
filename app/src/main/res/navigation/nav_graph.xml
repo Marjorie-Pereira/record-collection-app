@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recordListFragment">
+
+    <fragment
+        android:id="@+id/recordListFragment"
+        android:name="com.ulbra.kotlin_record_collection_app.ui.fragments.RecordListFragment"
+        android:label="My Record Collection"
+        tools:layout="@layout/fragment_record_list" >
+        <action
+            android:id="@+id/action_recordListFragment_to_albumDetailsFragment"
+            app:destination="@id/albumDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailsFragment"
+        android:name="com.ulbra.kotlin_record_collection_app.ui.fragments.AlbumDetailsFragment"
+        android:label="Album Details" >
+
+        <argument android:name="album" app:argType="com.ulbra.kotlin_record_collection_app.data.model.Album"/>
+        <action
+            android:id="@+id/action_albumDetailsFragment_to_recordListFragment"
+            app:destination="@id/recordListFragment" />
+    </fragment>
+</navigation>

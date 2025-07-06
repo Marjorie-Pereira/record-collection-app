@@ -12,7 +12,7 @@ class AlbumRepository {
             "1995",
             "Rock, Pop, Grunge",
             199.90,
-            R.drawable.jlp
+            cover = R.drawable.jlp
         ),
         Album(
             2,
@@ -30,7 +30,7 @@ class AlbumRepository {
             "2003",
             "Rock, Punk Rock, Hardcore",
             199.90,
-            R.drawable.coral_fang
+            cover = R.drawable.coral_fang
         ),
         Album(
             4,
@@ -39,7 +39,7 @@ class AlbumRepository {
             "2009",
             "Rock, Emocore, Pop Punk",
             199.90,
-            R.drawable.branneweyes
+            cover = R.drawable.branneweyes
         ),
         Album(
             5,
@@ -48,7 +48,7 @@ class AlbumRepository {
             "2022",
             "Pop, House, Dance",
             199.90,
-            R.drawable.renaissance
+            cover = R.drawable.renaissance
         ),
         Album(
             6,
@@ -57,7 +57,7 @@ class AlbumRepository {
             "2023",
             "r&b, pop, hip-hop",
             199.90,
-            R.drawable.sos
+            cover = R.drawable.sos
         ),
         Album(
             7,
@@ -66,7 +66,7 @@ class AlbumRepository {
             "1993",
             "Rock, alternative, grunge",
             390.90,
-            R.drawable.siamese_dream
+            cover = R.drawable.siamese_dream
         ),
         Album(
             8,
@@ -75,7 +75,7 @@ class AlbumRepository {
             "2024",
             "MPB, Samba, Soul, Jazz, Pagode, Pop",
             399.90,
-            R.drawable.caju
+            cover = R.drawable.caju
         )
     )
 
