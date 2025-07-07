@@ -6,7 +6,11 @@ import androidx.databinding.BindingAdapter
 object BindingAdapter {
     @BindingAdapter("bindImageResource")
     @JvmStatic
-    fun bindImageResource(imageView: ImageView, resId: Int) {
-        imageView.setImageResource(resId)
+    fun ImageView.setImageFromUri(uriString: String?) {
+        uriString?.let {
+            Glide.with(this.context)
+                .load(Uri.parse(it))
+                .into(this)
+        }
     }
 }

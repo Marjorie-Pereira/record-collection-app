@@ -46,13 +46,18 @@ class RecordListFragment : Fragment() {
         val rc = binding.recyclerView
         adapter = AlbumAdapter(
             onDelete = { album ->
-                albumViewModel.deleteAlbum(view, rc, album)
+                albumViewModel.removeAlbum(album)
             },
             onDetails = { album ->
                 goToDetails(album = album)
             }
         )
         rc.adapter = adapter
+
+        binding.fabAdd.setOnClickListener {
+            val action = ListTodoFragmentDirections.actionListTodoFragmentToFormTodoFragment()
+            findNavController().navigate(action)
+        }
 
     }
 

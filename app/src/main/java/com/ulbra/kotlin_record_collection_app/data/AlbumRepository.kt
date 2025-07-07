@@ -1,83 +1,16 @@
 package com.ulbra.kotlin_record_collection_app.data
 
-import com.ulbra.kotlin_record_collection_app.R
+import com.ulbra.kotlin_record_collection_app.data.local.AlbumLocalDataSource
+import com.ulbra.kotlin_record_collection_app.data.mappers.convertToEntity
+import com.ulbra.kotlin_record_collection_app.data.mappers.convertToModel
 import com.ulbra.kotlin_record_collection_app.data.model.Album
+import kotlinx.coroutines.flow.map
 
-class AlbumRepository {
-    var albumList = listOf(
-        Album(
-            1,
-            "Jagged Little Pill",
-            "Alanis Morissette",
-            "1995",
-            "Rock, Pop, Grunge",
-            199.90,
-            cover = R.drawable.jlp
-        ),
-        Album(
-            2,
-            "The Miseducation of Lauryn Hill",
-            "Lauryn Hill",
-            "1998",
-            "R&B, HipHop, Soul",
-            199.90,
-            cover = R.drawable.miseducation
-        ),
-        Album(
-            3,
-            "Coral Fang",
-            "The Distillers",
-            "2003",
-            "Rock, Punk Rock, Hardcore",
-            199.90,
-            cover = R.drawable.coral_fang
-        ),
-        Album(
-            4,
-            "Brand New Eyes",
-            "Paramore",
-            "2009",
-            "Rock, Emocore, Pop Punk",
-            199.90,
-            cover = R.drawable.branneweyes
-        ),
-        Album(
-            5,
-            "Renaissance",
-            "Beyoncé",
-            "2022",
-            "Pop, House, Dance",
-            199.90,
-            cover = R.drawable.renaissance
-        ),
-        Album(
-            6,
-            "SOS",
-            "SZA",
-            "2023",
-            "r&b, pop, hip-hop",
-            199.90,
-            cover = R.drawable.sos
-        ),
-        Album(
-            7,
-            "Siamese Dream",
-            "The Smashing Pumpkins",
-            "1993",
-            "Rock, alternative, grunge",
-            390.90,
-            cover = R.drawable.siamese_dream
-        ),
-        Album(
-            8,
-            "CAJU",
-            "Liniker",
-            "2024",
-            "MPB, Samba, Soul, Jazz, Pagode, Pop",
-            399.90,
-            cover = R.drawable.caju
-        )
-    )
+class AlbumRepository(private val dataSource: AlbumLocalDataSource)  {
 
-    fun getAlbums() = albumList
+    fun getAllAlbums() =
+        dataSource.getAllAlbums().map { entities -> entities.map { it.convertToModel() } }
+
+    suspend fun remove(album: Album) = dataSource.deleteAlbum(album.convertToEntity())
+    suspend fun add(album: Album) = dataSource.addAlbum(album.convertToEntity())
 }

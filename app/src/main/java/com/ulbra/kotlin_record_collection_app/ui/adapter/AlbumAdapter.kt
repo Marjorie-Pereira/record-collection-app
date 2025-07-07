@@ -8,7 +8,7 @@ import com.ulbra.kotlin_record_collection_app.data.model.Album
 import com.ulbra.kotlin_record_collection_app.databinding.AlbumBinding
 
 class AlbumAdapter(
-    private val onDelete: (Album) -> Boolean,
+    private val onDelete: (Album) -> Unit,
     private val onDetails: (Album) -> Unit
 ) : ListAdapter<Album, AlbumViewHolder>(AlbumDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
