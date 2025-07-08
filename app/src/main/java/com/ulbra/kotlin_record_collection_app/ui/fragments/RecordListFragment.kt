@@ -1,25 +1,21 @@
 package com.ulbra.kotlin_record_collection_app.ui.fragments
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.map
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.ulbra.kotlin_record_collection_app.R
-import com.ulbra.kotlin_record_collection_app.data.AlbumRepository
 import com.ulbra.kotlin_record_collection_app.data.model.Album
 import com.ulbra.kotlin_record_collection_app.databinding.FragmentRecordListBinding
 import com.ulbra.kotlin_record_collection_app.ui.adapter.AlbumAdapter
 import com.ulbra.kotlin_record_collection_app.ui.viewmodel.AlbumViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 class RecordListFragment : Fragment() {
     private lateinit var binding: FragmentRecordListBinding
@@ -44,6 +40,9 @@ class RecordListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val rc = binding.recyclerView
+        val alertDialogBuilder = AlertDialog.Builder(view.context)
+        alertDialogBuilder.setMessage("Deletar o item?")
+
         adapter = AlbumAdapter(
             onDelete = { album ->
                 albumViewModel.removeAlbum(album)
@@ -55,15 +54,32 @@ class RecordListFragment : Fragment() {
         rc.adapter = adapter
 
         binding.fabAdd.setOnClickListener {
-            val action = ListTodoFragmentDirections.actionListTodoFragmentToFormTodoFragment()
+            val action = RecordListFragmentDirections.actionRecordListFragmentToAlbumFormFragment()
             findNavController().navigate(action)
         }
-
     }
 
     private fun goToDetails(album: Album) {
         val action = RecordListFragmentDirections.actionRecordListFragmentToAlbumDetailsFragment(album)
         findNavController().navigate(action)
+    }
+
+    private fun showDeleteConfirmation(album: Album) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Excluir álbum")
+            .setMessage("Tem certeza de que deseja excluir \"${album.title}\"?")
+            .setPositiveButton("Sim") { _, _ ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    albumViewModel.removeAlbum(album)
+                    showSnackbar("Álbum excluído")
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
+    }
+
+    private fun showSnackbar(message: String) {
+        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
 }

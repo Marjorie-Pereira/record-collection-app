@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_recordListFragment_to_albumDetailsFragment"
             app:destination="@id/albumDetailsFragment" />
+        <action
+            android:id="@+id/action_recordListFragment_to_albumFormFragment"
+            app:destination="@id/albumFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumDetailsFragment"
@@ -22,6 +25,14 @@
         <argument android:name="album" app:argType="com.ulbra.kotlin_record_collection_app.data.model.Album"/>
         <action
             android:id="@+id/action_albumDetailsFragment_to_recordListFragment"
+            app:destination="@id/recordListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFormFragment"
+        android:name="com.ulbra.kotlin_record_collection_app.ui.fragments.AlbumFormFragment"
+        android:label="Adicionar Album" >
+        <action
+            android:id="@+id/action_albumFormFragment_to_recordListFragment"
             app:destination="@id/recordListFragment" />
     </fragment>
 </navigation>

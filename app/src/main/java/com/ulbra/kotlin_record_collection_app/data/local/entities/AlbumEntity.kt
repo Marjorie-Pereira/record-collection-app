@@ -12,5 +12,5 @@ data class AlbumEntity (
     val year: String,
     val genre: String,
     val price: Double,
-    val cover: Int
+    val cover: String? = null
 )
