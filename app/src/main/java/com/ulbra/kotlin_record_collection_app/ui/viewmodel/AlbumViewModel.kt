@@ -32,5 +32,9 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
         repository.add(album)
     }
 
+    fun updateAlbum(album: Album?) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(album)
+    }
+
 
 }

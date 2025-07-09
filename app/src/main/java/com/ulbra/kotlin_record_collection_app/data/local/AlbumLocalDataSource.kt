@@ -11,6 +11,10 @@ class AlbumLocalDataSource(private val albumDao: AlbumDao) {
         albumDao.insert(album)
     }
 
+    suspend fun updateAlbum(album: AlbumEntity) {
+        albumDao.update(album)
+    }
+
     suspend fun deleteAlbum(album: AlbumEntity) {
         albumDao.delete(album)
     }

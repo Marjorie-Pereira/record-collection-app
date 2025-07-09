@@ -1,10 +1,9 @@
 package com.ulbra.kotlin_record_collection_app.ui.adapter
 
-import android.net.Uri
 import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import androidx.core.net.toUri
 
 object BindingAdapter {
     @BindingAdapter("bindImageResource")

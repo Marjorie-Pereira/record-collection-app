@@ -5,6 +5,7 @@ import com.ulbra.kotlin_record_collection_app.data.model.Album
 
 fun Album.convertToEntity() =
     AlbumEntity(
+        id = this.id,
         title = this.title,
         artist = this.artist,
         year = this.year,

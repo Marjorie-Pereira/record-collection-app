@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_albumDetailsFragment_to_recordListFragment"
             app:destination="@id/recordListFragment" />
+        <action
+            android:id="@+id/action_albumDetailsFragment_to_albumFormFragment"
+            app:destination="@id/albumFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumFormFragment"
@@ -34,5 +37,12 @@
         <action
             android:id="@+id/action_albumFormFragment_to_recordListFragment"
             app:destination="@id/recordListFragment" />
+        <argument
+            android:name="from"
+            app:argType="string"
+            android:defaultValue="unknown" />
+
+        <argument android:name="album" app:argType="com.ulbra.kotlin_record_collection_app.data.model.Album"
+            app:nullable="true" />
     </fragment>
 </navigation>

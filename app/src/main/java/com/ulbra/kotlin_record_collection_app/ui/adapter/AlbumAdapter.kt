@@ -9,13 +9,14 @@ import kotlinx.coroutines.Job
 
 class AlbumAdapter(
     private val onDelete: (Album) -> Job,
-    private val onDetails: (Album) -> Unit
+    private val onDetails: (Album) -> Unit,
+    private val onLongClick: (Album) -> Unit
 ) : ListAdapter<Album, AlbumViewHolder>(AlbumDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumViewHolder {
         val binding =
             AlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return AlbumViewHolder(binding = binding, onDelete = onDelete, onDetails = onDetails)
+        return AlbumViewHolder(binding = binding, onDelete = onDelete, onDetails = onDetails, onLongClick = onLongClick)
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {

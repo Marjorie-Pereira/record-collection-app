@@ -49,12 +49,15 @@ class RecordListFragment : Fragment() {
             },
             onDetails = { album ->
                 goToDetails(album = album)
+            },
+            onLongClick = {album ->
+                showDeleteConfirmation(album)
             }
         )
         rc.adapter = adapter
 
         binding.fabAdd.setOnClickListener {
-            val action = RecordListFragmentDirections.actionRecordListFragmentToAlbumFormFragment()
+            val action = RecordListFragmentDirections.actionRecordListFragmentToAlbumFormFragment(null)
             findNavController().navigate(action)
         }
     }
@@ -67,19 +70,15 @@ class RecordListFragment : Fragment() {
     private fun showDeleteConfirmation(album: Album) {
         AlertDialog.Builder(requireContext())
             .setTitle("Excluir álbum")
-            .setMessage("Tem certeza de que deseja excluir \"${album.title}\"?")
+            .setMessage("Tem certeza de que deseja excluir o item?")
             .setPositiveButton("Sim") { _, _ ->
                 viewLifecycleOwner.lifecycleScope.launch {
                     albumViewModel.removeAlbum(album)
-                    showSnackbar("Álbum excluído")
+                    Snackbar.make(requireView(), "Item deletado!", Snackbar.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton("Cancelar", null)
             .show()
-    }
-
-    private fun showSnackbar(message: String) {
-        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
 }

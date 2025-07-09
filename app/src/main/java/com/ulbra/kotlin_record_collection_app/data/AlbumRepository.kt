@@ -13,4 +13,5 @@ class AlbumRepository(private val dataSource: AlbumLocalDataSource)  {
 
     suspend fun remove(album: Album) = dataSource.deleteAlbum(album.convertToEntity())
     suspend fun add(album: Album) = dataSource.addAlbum(album.convertToEntity())
+    suspend fun update(album: Album?) = dataSource.updateAlbum(album!!.convertToEntity())
 }

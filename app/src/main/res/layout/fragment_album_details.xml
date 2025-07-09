@@ -4,6 +4,8 @@
         <variable
             name="album"
             type="com.ulbra.kotlin_record_collection_app.data.model.Album" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,6 +15,16 @@
         android:layout_height="match_parent"
         android:background="@color/black">
 
+        <Button
+            android:id="@+id/editAlbumBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Editar Album"
+            android:backgroundTint="@color/checkBox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardTodo"
@@ -23,7 +35,7 @@
             android:elevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editAlbumBtn"
             >
 
 

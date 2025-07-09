@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ulbra.kotlin_record_collection_app.R
 import com.ulbra.kotlin_record_collection_app.databinding.FragmentAlbumDetailsBinding
@@ -30,6 +31,13 @@ class AlbumDetailsFragment : Fragment() {
 
         val albumArgs = args.album
         binding.album = albumArgs
+
+
+        binding.editAlbumBtn.setOnClickListener {
+            val action = AlbumDetailsFragmentDirections.actionAlbumDetailsFragmentToAlbumFormFragment(from = "details", album = albumArgs)
+            findNavController().navigate(action)
+        }
+
 
     }
 
