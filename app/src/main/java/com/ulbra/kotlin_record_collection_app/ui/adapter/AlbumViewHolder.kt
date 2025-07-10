@@ -8,7 +8,6 @@ import kotlinx.coroutines.Job
 
 class AlbumViewHolder(
     private val binding: AlbumBinding,
-    private val onDelete: (Album) -> Job,
     private val onDetails: (Album) -> Unit,
     private val onLongClick: (Album) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {

@@ -8,7 +8,6 @@ import com.ulbra.kotlin_record_collection_app.databinding.AlbumBinding
 import kotlinx.coroutines.Job
 
 class AlbumAdapter(
-    private val onDelete: (Album) -> Job,
     private val onDetails: (Album) -> Unit,
     private val onLongClick: (Album) -> Unit
 ) : ListAdapter<Album, AlbumViewHolder>(AlbumDiffCallback()) {
@@ -16,7 +15,7 @@ class AlbumAdapter(
         val binding =
             AlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return AlbumViewHolder(binding = binding, onDelete = onDelete, onDetails = onDetails, onLongClick = onLongClick)
+        return AlbumViewHolder(binding = binding, onDetails = onDetails, onLongClick = onLongClick)
     }
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {

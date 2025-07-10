@@ -44,9 +44,6 @@ class RecordListFragment : Fragment() {
         alertDialogBuilder.setMessage("Deletar o item?")
 
         adapter = AlbumAdapter(
-            onDelete = { album ->
-                albumViewModel.removeAlbum(album)
-            },
             onDetails = { album ->
                 goToDetails(album = album)
             },

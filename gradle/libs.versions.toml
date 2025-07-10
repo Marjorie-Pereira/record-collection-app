@@ -21,6 +21,7 @@ roomCommonJvm = "2.7.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+compiler = { module = "com.github.bumptech.glide:ksp", version.ref = "compiler" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-compiler = { module = "com.github.bumptech.glide:ksp", version.ref = "compiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
